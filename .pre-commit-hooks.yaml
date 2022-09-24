@@ -1,0 +1,21 @@
+# vim: expandtab shiftwidth=2 smartindent smarttab tabstop=2 softtabstop=2
+
+---
+- id: checkov
+  description: checkov perform checks
+  name: Audit terraform with checkov
+  entry: checkov.sh
+  args: ['--']
+  language: script
+  stages: [commit, manual]
+  require_serial: true
+  verbose: false
+  types: [text, terraform]
+- id: ymllint
+  description: yamllint check yamlfiles
+  name: yamllint check
+  entry: ymllint.sh
+  language: script
+  stages: [commit, manual]
+  verbose: false
+  files: \.(yml|yaml)$

@@ -1,0 +1,8 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+-   repo: https://github.com/radomuc/precommit-lib
+    rev: v3.2.0
+    hooks:
+    -   id: ymllint
+    -   id: checkov
