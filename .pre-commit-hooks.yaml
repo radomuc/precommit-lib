@@ -4,7 +4,7 @@
 - id: checkov
   description: checkov perform checks
   name: Audit terraform with checkov
-  entry: checkov.sh
+  entry: pre-commit-hooks/checkov.sh
   args: ['--']
   language: script
   stages: [commit, manual]
@@ -14,7 +14,7 @@
 - id: ymllint
   description: yamllint check yamlfiles
   name: yamllint check
-  entry: ymllint.sh
+  entry: pre-commit-hooks/ymllint.sh
   language: script
   stages: [commit, manual]
   verbose: false
