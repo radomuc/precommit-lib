@@ -19,3 +19,12 @@
   stages: [commit, manual]
   verbose: false
   files: \.(yml|yaml)$
+- id: terraform-fmt
+  description: terraform format checks
+  name: terraform-fmt
+  entry: pre-commit-hooks/terraform-fmt.sh
+  args: [-check, -write=false]
+  language: script
+  stages: [commit, manual]
+  verbose: false
+  types: [text, terraform]

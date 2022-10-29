@@ -2,11 +2,11 @@
 # vim: expandtab softtabstop=2 tabstop=2 shiftwidth=2 smartindent autoindent
 
 ################################################################################
-# Yaml lint
+# checkov pre-commit hook
 ################################################################################
 # Author: Radomir Ochtyra <radomir.ochtyra@lurse.de>
-# Create: 07.09.2022
-# Update: 07.09.2022
+# Create: 29.10.2022
+# Update: 29.10.2022
 ################################################################################
 
 function realrelpath {
@@ -32,4 +32,8 @@ SCRIPTRELDIR="$(dirname "$(realrelpath ${BASH_SOURCE[0]})")"
 SCRIPTABSDIR="$(readlink -f ${SCRIPTRELDIR})"
 SCRIPTDIR="$SCRIPTRELDIR"
 
-yamllint -c $SCRIPTDIR/ymllint.cfg --no-warnings $@
+function run {
+    terraform fmt "$@"
+}
+
+run "$@"

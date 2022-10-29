@@ -6,3 +6,4 @@ repos:
     hooks:
     -   id: ymllint
     -   id: checkov
+    -   id: terraform-fmt
