@@ -33,6 +33,7 @@ SCRIPTABSDIR="$(readlink -f ${SCRIPTRELDIR})"
 SCRIPTDIR="$SCRIPTRELDIR"
 
 function run {
+    echo "DEBUG: terraform fmt \"$@\""
     terraform fmt "$@"
 }
 
