@@ -23,7 +23,7 @@
   description: terraform format checks
   name: terraform-fmt
   entry: pre-commit-hooks/terraform-fmt.sh
-  args: [-check, -write=false]
+  args: [-check, -write=false, --]
   language: script
   stages: [commit, manual]
   verbose: false

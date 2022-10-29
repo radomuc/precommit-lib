@@ -32,9 +32,46 @@ SCRIPTRELDIR="$(dirname "$(realrelpath ${BASH_SOURCE[0]})")"
 SCRIPTABSDIR="$(readlink -f ${SCRIPTRELDIR})"
 SCRIPTDIR="$SCRIPTRELDIR"
 
+PROG_TF="terraform"
+
 function run {
-    echo "DEBUG: terraform fmt" "$@"
-    terraform fmt "$@"
+    local L_PROG_ARGS=()
+    local L_FILES=()
+    local L_DELIMITER_EXIST=0
+
+    for a in "$@"; do
+      if [ "$a" == "--" ]; then
+        L_DELIMITER_EXIST=1
+        break
+      fi
+    done
+
+    local L_FOUND=0
+    if [ "$L_DELIMITER_EXIST" -ne 0 ]; then
+      for a in "$@"; do
+        if [ "$a" == "--" ]; then
+          L_FOUND=1
+          continue
+        fi
+
+        if [ "$L_FOUND" -ne 0 ]; then
+          L_FILES+=("$a")
+        else
+          L_PROG_ARGS+=("$a")
+        fi
+      done
+    else
+      for a in "$@"; do
+        if [ "${a:0:1}" == "-" ]; then
+          L_PROG_ARGS+=("$a")
+        else
+          L_FILES+=("$a")
+        fi
+      done
+    fi
+
+    echo -e "DEBUG: ""${L_FILES[@]}"" | xargs -n1 terraform ""${L_PROG_ARGS[@]}"
+    echo -e "${L_FILES[@]}" | xargs -n1 "$PROG_TF" "${L_PROG_ARGS[@]}"
 }
 
 run "$@"
