@@ -71,7 +71,7 @@ function run {
     fi
 
     echo -e "DEBUG: ""${L_FILES[@]}"" | xargs -n1 terraform ""${L_PROG_ARGS[@]}"
-    echo -e "${L_FILES[@]}" | xargs -n1 "$PROG_TF" "${L_PROG_ARGS[@]}"
+    echo -e "${L_FILES[@]}" | xargs -n1 "$PROG_TF" fmt "${L_PROG_ARGS[@]}"
 }
 
 run "$@"
