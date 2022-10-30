@@ -34,7 +34,6 @@ SCRIPTDIR="$SCRIPTRELDIR"
 
 EXIST_SECRETS=1
 
-echo "current dir: $(pwd)"
 for s in $(git secret list); do
     if [ ! -f "$s" ]; then
         EXIST_SECRETS=0
