@@ -28,3 +28,12 @@
   stages: [commit, manual]
   verbose: false
   types: [text, terraform]
+- id: git-secret-hide
+  description: ensure to encrypt secret files
+  name: git secret hide
+  entry: pre-commit-hooks/git-secret.sh
+  language: script
+  stages: [commit]
+  always_run: true
+  pass_filenames: false
+  verbose: true

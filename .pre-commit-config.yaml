@@ -7,3 +7,4 @@ repos:
     -   id: ymllint
     -   id: checkov
     -   id: terraform-fmt
+    -   id: git-secret
